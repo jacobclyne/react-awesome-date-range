@@ -23,6 +23,7 @@ class DateRange extends Component {
       onChange,
       maxDate,
       moveRangeOnFirstSelection,
+      retainStartDateOnSelection,
       retainEndDateOnFirstSelection,
       disabledDates,
     } = this.props;
@@ -33,7 +34,7 @@ class DateRange extends Component {
     const now = new Date();
     let nextFocusRange;
     if (!isSingleValue) {
-      startDate = value.startDate;
+      !retainStartDateOnSelection && (startDate = value.startDate);
       endDate = value.endDate;
     } else if (focusedRange[1] === 0) {
       // startDate selection
@@ -50,7 +51,7 @@ class DateRange extends Component {
         }
         return value || now;
       };
-      startDate = value;
+      !retainStartDateOnSelection && (startDate = value);
       endDate = calculateEndDate();
       if (maxDate) endDate = min([endDate, maxDate]);
       nextFocusRange = [focusedRange[0], 1];
@@ -73,7 +74,7 @@ class DateRange extends Component {
     );
 
     if (inValidDatesWithinRange.length > 0) {
-      if (isStartDateSelected) {
+      if (isStartDateSelected && !retainStartDateOnSelection) {
         startDate = addDays(max(inValidDatesWithinRange), 1);
       } else {
         endDate = addDays(min(inValidDatesWithinRange), -1);
@@ -152,6 +153,7 @@ DateRange.defaultProps = {
   retainEndDateOnFirstSelection: false,
   rangeColors: ['#3d91ff', '#3ecf8e', '#fed14c'],
   disabledDates: [],
+  retainStartDateOnSelection: false,
 };
 
 DateRange.propTypes = {
@@ -162,6 +164,7 @@ DateRange.propTypes = {
   ranges: PropTypes.arrayOf(rangeShape),
   moveRangeOnFirstSelection: PropTypes.bool,
   retainEndDateOnFirstSelection: PropTypes.bool,
+  retainStartDateOnSelection: PropTypes.bool,
 };
 
 export default DateRange;
