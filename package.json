@@ -1,14 +1,16 @@
 {
-  "name": "react-date-range",
-  "version": "1.4.0",
+  "name": "react-awesome-date-range",
+  "version": "1.0.0",
   "description": "A React component for choosing dates and date ranges.",
   "main": "dist/index.js",
   "scripts": {
     "build": "npm run build:css & npm run build:js",
     "build:css": "postcss 'src/styles.scss' -d dist --ext css & postcss 'src/theme/*.scss' -d 'dist/theme' --ext css",
     "build:js": "babel ./src --out-dir ./dist --ignore test.js",
-    "test": "jest",
-    "preversion": "npm run clear & npm run build"
+    "clear": "rm -rf ./dist",
+    "preversion": "npm run clear & npm run build",
+    "ship": "npm version patch && npm run build && npm publish",
+    "postpublish": "git push"
   },
   "keywords": [
     "react",
