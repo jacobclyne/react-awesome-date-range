@@ -19,13 +19,6 @@
     "datepicker",
     "rangepicker"
   ],
-  "contributors": [
-    "Burak Can <neoberg@gmail.com> (https://github.com/burakcan)",
-    "Mehmet Kamil Morcay <mehmetmorcay@gmail.com> (https://github.com/mkg0)",
-    "Kamyar Ghasemlou <github@kamy.me> (https://github.com/kamyar)",
-    "Engin Semih Basmacı <semih.basmaci@gmail.com> (https://github.com/mortargrind)",
-    "Onur Kerimov <onurkerimov@gmail.com> (https://github.com/onurkerimov)"
-  ],
   "license": "MIT",
   "repository": {
     "type": "git",
